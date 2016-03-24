@@ -34,9 +34,9 @@ void loop() {
   if (distance > 20) { 
     if (distance < 30) {
       if (state1Done == false) {
-        folkracer.stop();
-        folkracer.rotate(180);
-        folkracer.setSpeed(0.5);
+        folkracer.stop(); // Σταματάμε το αυτοκίνητο
+        folkracer.rotate(180); // του λέμε να στρίψει 180 μοίρες
+        folkracer.setSpeed(0.5); // βάζουμε ταχύτητα 0.5
         state1Done = true;
       }
     }
@@ -46,11 +46,11 @@ void loop() {
   //στα δεξιά. Στη συνέχεια, θέστε ταχύτητα 0.5 μέτρα το δευτερόλεπτο
   if (distance > 80){
     if (distance < 90){
-      if (state1Done == false) {
-        folkracer.stop();
-        folkracer.rotate(90);
-        folkracer.setSpeed(0.5);
-        state2Done = true;
+      if (state2Done == false) {
+        folkracer.stop(); // Σταματάμε το αυτοκίνητο
+        folkracer.rotate(90); // του λέμε να στρίψει 90 μοίρες δεξιά
+        folkracer.setSpeed(0.5); //βάζουμε ταχύτητα 0.5
+        state2Done = true; 
       }
     }
   }
