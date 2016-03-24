@@ -11,7 +11,7 @@
 
 Odometer encoderLeft(93), encoderRight(93); //Βάλτε τους δικούς σας παλμούς ανά μέτρο
 Gyroscope gyro(18); //Βάλτε την κατάλληλη τιμή σύμφωνα με το γυροσκόπιό σας
-Car folkracer;
+Car folkracer; 
 boolean state1Done = false;
 boolean state2Done = false;
 
@@ -24,14 +24,14 @@ void setup() {
   gyro.begin();
   folkracer.begin(encoderLeft, encoderRight, gyro);
   folkracer.enableCruiseControl();
-  folkracer.setSpeed(0.5);
+  folkracer.setSpeed(0.5); //θέτουμε την ταχύτητα 0.5
 }
 
 void loop() {
-  folkracer.updateMotors();
+  folkracer.updateMotors(); 
   unsigned long distance = encoderLeft.getDistance();
   distance = distance + encoderRight.getDistance();
-  if (distance > 20) {
+  if (distance > 20) { 
     if (distance < 30) {
       if (state1Done == false) {
         folkracer.stop();
@@ -44,8 +44,21 @@ void loop() {
   //TO-DO
   //Όταν το αυτοκινητάκι έχει διανύσει από 80 μέχρι 90 εκατοστά, τότε σταματήστε το και μετά περιστρέψτε το κατά 90 μοίρες
   //στα δεξιά. Στη συνέχεια, θέστε ταχύτητα 0.5 μέτρα το δευτερόλεπτο
-  
+  if (distance > 80){
+    if (distance < 90){
+      if (state1Done == false) {
+        folkracer.stop();
+        folkracer.rotate(90);
+        folkracer.setSpeed(0.5);
+        state2Done = true;
+      }
+    }
+  }
+    
   //TO-DO
   //Όταν το αυτοκινητάκι έχει διανύσει απόσταση μεγαλύτερη των 150 εκατοστών, τότε πείτε του να σταματήσει (ή εναλλακτικά θέστε
   //ταχύτητα μηδέν)
+  if(distance > 150){
+    folkracer.stop
+  }
 }
